@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
+      flash[:success] = "Question updated successfully"
       redirect_to questions_path
     else
       render :edit
@@ -27,6 +28,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
+      flash[:success] = "Question was successfully created"
       redirect_to questions_path
     else
       render :new
